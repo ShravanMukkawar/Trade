@@ -1,0 +1,274 @@
+.telescopeContainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* IMAGES */
+.telescopeContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* HEADINGS NOW WHITE */
+.telescopeContainer h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  line-height: 1;
+  color: white !important;
+}
+
+/* PARAGRAPHS NOW WHITE */
+.telescopeContainer p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  color: white !important;
+}
+
+/* SECTIONS FULLSCREEN */
+.telescopeContainer section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: transparent !important; /* FIX */
+}
+
+/* INTRO/OUTRO — make transparent */
+.intro,
+.outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+  color: white !important;
+}
+
+/* INTRO TEXT */
+.spotlightIntroTextWrapper {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.spotlightIntroText {
+  flex: 1;
+  position: relative;
+  will-change: transform;
+}
+
+.spotlightIntroText:nth-child(1) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* BACKGROUND ZOOM IMAGE (not used but fixed) */
+.spotlightBgImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: scale(0);
+  will-change: transform;
+}
+
+.spotlightBgImg img {
+  transform: scale(1.5);
+  will-change: transform;
+}
+
+/* TITLES BLOCK */
+.spotlightTitlesContainer {
+  position: absolute;
+  top: 0;
+  left: 15vw;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(
+    50svh 0px,
+    0px 50%,
+    50svh 100%,
+    100% calc(100% + 100svh),
+    100% -100svh
+  );
+  --before-opacity: 0;
+  --after-opacity: 0;
+}
+
+.spotlightTitlesContainer::before,
+.spotlightTitlesContainer::after {
+  content: "";
+  position: absolute;
+  width: 100svh;
+  height: 2.5px;
+  background: white !important;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.spotlightTitlesContainer::before {
+  top: 0;
+  left: 0;
+  transform: rotate(-45deg) translate(-7rem);
+  opacity: var(--before-opacity);
+}
+
+.spotlightTitlesContainer::after {
+  bottom: 0;
+  left: 0;
+  transform: rotate(45deg) translate(-7rem);
+  opacity: var(--after-opacity);
+}
+
+/* TITLE LIST */
+.spotlightTitles {
+  position: relative;
+  left: 15%;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  transform: translateY(100%);
+  z-index: 2;
+}
+
+/* TITLES — WHITE */
+.spotlightTitles h1 {
+  color: white !important;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
+/* IMAGE PANEL */
+.spotlightImages {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  min-width: 300px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spotlightImg {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  will-change: transform;
+}
+
+/* LEFT "SPECIALTIES" LABEL — WHITE */
+.spotlightHeader {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white !important;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  opacity: 0;
+}
+
+/* MOBILE */
+@media (max-width: 1000px) {
+  .telescopeContainer h1 {
+    font-size: 2rem;
+  }
+
+  .intro,
+  .outro {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .spotlightTitlesContainer {
+    clip-path: none;
+  }
+
+  .spotlightTitlesContainer::before,
+  .spotlightTitlesContainer::after {
+    display: none;
+  }
+
+  .spotlightTitles {
+    left: 0;
+  }
+
+  .spotlightHeader {
+    display: none;
+  }
+
+  .spotlightImages {
+    width: 60%;
+    min-width: 250px;
+  }
+
+  .spotlightImg {
+    width: 150px;
+    height: 112px;
+  }
+}
+
+@media (max-width: 768px) {
+  .telescopeContainer h1 {
+    font-size: 1.5rem;
+  }
+
+  .telescopeContainer p {
+    font-size: 1.2rem;
+  }
+
+  .spotlightTitles {
+    gap: 3rem;
+  }
+
+  .spotlightImages {
+    width: 70%;
+    min-width: 200px;
+  }
+
+  .spotlightImg {
+    width: 120px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .telescopeContainer h1 {
+    font-size: 1.2rem;
+  }
+
+  .telescopeContainer p {
+    font-size: 1rem;
+  }
+
+  .intro,
+  .outro {
+    padding: 1rem;
+  }
+
+  .spotlightTitles {
+    gap: 2rem;
+    left: 5%;
+    width: 90%;
+  }
+
+  .spotlightImages {
+    width: 80%;
+    min-width: 150px;
+  }
+
+  .spotlightImg {
+    width: 100px;
+    height: 75px;
+  }
+}

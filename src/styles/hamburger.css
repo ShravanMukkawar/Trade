@@ -1,0 +1,90 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+/* 🔧 Clean hamburger button */
+.menu-toggle {
+  border: none; /* Removed thick black border */
+  outline: none; /* Removes browser focus ring */
+  width: 3rem;
+  height: 3rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: none; /* Removes any browser default shadow */
+}
+
+/* Prevent orange/blue focus borders */
+.menu-toggle:focus,
+.menu-toggle:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* When clicked, background changes */
+.menu-toggle.clicked {
+  background-color: #000;
+}
+
+/* Hamburger lines */
+.menu-toggle span {
+  display: block;
+  width: 1.8rem;
+  height: 0.2rem;
+  border-radius: 99em;
+  background-color: #000;
+  transition: 0.5s ease;
+  position: relative;
+}
+
+/* Top and bottom bars */
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  border-radius: 99em;
+  transition: 0.5s ease;
+}
+
+.menu-toggle span::before {
+  top: 0.5rem;
+}
+
+.menu-toggle span::after {
+  bottom: 0.5rem;
+}
+
+/* Animation when clicked */
+.menu-toggle.clicked span {
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.menu-toggle.clicked span::before {
+  background-color: #fff;
+  transform: rotate(90deg) translate(-0.6rem);
+}
+
+.menu-toggle.clicked span::after {
+  background-color: #fff;
+  transform: rotate(90deg) translate(0.6rem);
+  opacity: 0;
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}

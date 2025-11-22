@@ -1,0 +1,23 @@
+.char {
+  display: inline-block;
+}
+
+/* When used inside gradient text (text-transparent + bg-clip-text),
+   make sure each character span still participates in the gradient fill. */
+.char--gradient {
+  background: inherit;
+  background-clip: inherit;
+  -webkit-background-clip: inherit;
+  color: inherit;
+}
+
+/* Mobile: avoid breaking words in the Subscription Plans heading/subtitle,
+   but still allow normal wrapping between words (phones up to 768px). */
+@media (max-width: 768px) {
+  .pricing-section-overlay h1,
+  .pricing-section-overlay p {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+}
