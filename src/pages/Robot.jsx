@@ -48,7 +48,7 @@ const Robot = () => {
 
         {/* Mobile short version */}
         <h1 className="special-font robot-title mobile-text">
-          IBH
+          Investment Banking House
         </h1>
 
         <p className="robot-subtext">Your trusted AI Partner in Finance.</p>
