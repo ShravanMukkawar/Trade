@@ -6,44 +6,77 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
-  /* Improve text rendering across devices to reduce blur */
+  cursor: pointer;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
   background: #f9fafc;
   border-radius: 18px;
-
-  /* Always show the blue accent border (was previously only on hover) */
   border: 1px solid rgba(56, 189, 248, 0.9);
-  box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.22),
-    0 0 0 1px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.4);
+  transform: perspective(900px) rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
+  backface-visibility: hidden;
+  transition: transform 220ms ease-out, box-shadow 220ms ease-out, border-color 220ms ease-out, background 300ms ease-out;
+}
 
-  transform-style: preserve-3d;
-  transform:
-    perspective(900px)
-    rotateX(var(--card-rotate-x, 0deg))
-    rotateY(var(--card-rotate-y, 0deg));
+@media (min-width: 1024px) {
+  .plan-card:hover {
+    background: #1F6BFC;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .plan-card:hover .plan-card-title,
+  .plan-card:hover .plan-card-price-current,
+  .plan-card:hover .plan-card-period,
+  .plan-card:hover .plan-card-feature-text {
+    color: white;
+  }
+  
+  .plan-card:hover .plan-card-feature-icon {
+    color: white;
+  }
+  
+  .plan-card:hover .plan-card-feature-icon-wrap {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .plan-card:hover .plan-card-price-original {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .plan-card:hover .plan-card-discount-badge {
+    background: rgba(74, 222, 128, 0.25);
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.5);
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.2);
+  }
+  
+  .plan-card:hover .plan-card-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
 
-  transition:
-    transform 220ms ease-out,
-    box-shadow 220ms ease-out,
-    border-color 220ms ease-out,
-    background 220ms ease-out;
+.plan-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: radial-gradient(#0f172a 0.6px, transparent 0.6px);
+  background-size: 14px 14px;
+  background-repeat: repeat;
 }
 
 .plan-card:hover {
-  transform:
-    perspective(900px)
-    translateY(-6px)
-    scale(1.02)
-    rotateX(var(--card-rotate-x, 0deg))
-    rotateY(var(--card-rotate-y, 0deg));
-
-  box-shadow:
-    0 24px 60px rgba(15, 23, 42, 0.4),
-    0 0 40px rgba(56, 189, 248, 0.35);
+  transform: perspective(900px) translateY(-6px) scale(1.02) 
+             rotateX(var(--card-rotate-x, 0deg)) rotateY(var(--card-rotate-y, 0deg));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4), 0 0 40px rgba(56, 189, 248, 0.35);
 }
 
 .plan-card-accent-wrap {
@@ -94,34 +127,37 @@
 }
 
 .plan-card-price-original {
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: rgba(15, 23, 42, 0.5);
   text-decoration: line-through;
 }
 
 .plan-card-price-current {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: #0f172a;
+  line-height: 1;
 }
 
 .plan-card-discount-badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.08rem 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
   border-radius: 999px;
-  background: rgba(22, 163, 74, 0.09);
+  background: rgba(22, 163, 74, 0.12);
   color: #15803d;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  margin-left: 0.5rem;
 }
 
 .plan-card-period {
-  margin-top: 0.35rem;
-  font-size: 0.7rem;
-  font-weight: 700;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   color: #0f172a;
   text-align: center; /* align with centered price */
   margin-bottom: 0.75rem; /* extra breathing room below price block */
+  opacity: 0.9;
 }
 
 .plan-card-features {
@@ -174,27 +210,70 @@
   }
 
   .plan-card-price-current {
-    font-size: 1.58rem;
+    font-size: 2.5rem;
   }
 }
 
-/* On mobile/tablet, avoid 3D transforms and hover scaling to keep text crisp */
 @media (max-width: 1023px) {
   .plan-card {
     transform: none;
     transform-style: flat;
+    transition: background 300ms ease-out;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
   }
 
+  .plan-card:active {
+    background: #1F6BFC;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .plan-card:active .plan-card-title,
+  .plan-card:active .plan-card-price-current,
+  .plan-card:active .plan-card-period,
+  .plan-card:active .plan-card-feature-text,
+  .plan-card:active .plan-card-feature-icon {
+    color: white;
+  }
+  
+  .plan-card:active .plan-card-feature-icon-wrap {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .plan-card:active .plan-card-price-original {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .plan-card:active .plan-card-description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
   .plan-card:hover {
     transform: none;
-    box-shadow:
-      0 18px 45px rgba(15, 23, 42, 0.22),
-      0 0 0 1px rgba(255, 255, 255, 0.4);
+    background: #f9fafc;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.4);
+  }
+  
+  .plan-card:hover .plan-card-title,
+  .plan-card:hover .plan-card-price-current,
+  .plan-card:hover .plan-card-period,
+  .plan-card:hover .plan-card-feature-text,
+  .plan-card:hover .plan-card-feature-icon,
+  .plan-card:hover .plan-card-price-original,
+  .plan-card:hover .plan-card-description {
+    color: inherit;
+  }
+  
+  .plan-card:hover .plan-card-feature-icon-wrap {
+    background: rgba(15, 23, 42, 0.02);
+    border: 1px solid rgba(148, 163, 184, 0.6);
   }
 }
 
-/* Pricing layout helpers to avoid glow clipping */
- .pricing-card {
+.pricing-card {
   position: relative;
   z-index: 20;
 }
@@ -203,12 +282,12 @@
   overflow: visible;
 }
 
-.pricing-section-overlay::before,
-.pricing-section-overlay::after {
-  z-index: 0;
-}
-
 .pricing-section-overlay {
   position: relative;
   overflow: visible;
+}
+
+.pricing-section-overlay::before,
+.pricing-section-overlay::after {
+  z-index: 0;
 }

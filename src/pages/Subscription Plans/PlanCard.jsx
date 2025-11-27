@@ -1,7 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import "./PlanCard.css";
+import HoverSound from "@/components/HoverSound";
 
 const PlanCard = ({ name, price, originalPrice, discountedPrice, description, features, variant }) => {
   const hasDiscountData =
@@ -40,11 +41,12 @@ const PlanCard = ({ name, price, originalPrice, discountedPrice, description, fe
   }, []);
 
   return (
-    <Card
-      className={`plan-card pricing-card ${variant === "left" ? "plan-card--left" : ""}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <HoverSound>
+      <Card
+        className={`plan-card pricing-card ${variant === "left" ? "plan-card--left" : ""}`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
       <div className="plan-card-accent-wrap">
         <div className="plan-card-accent">
         </div>
@@ -76,6 +78,7 @@ const PlanCard = ({ name, price, originalPrice, discountedPrice, description, fe
         ))}
       </div>
     </Card>
+    </HoverSound>
   );
 };
 

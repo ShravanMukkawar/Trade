@@ -28,17 +28,18 @@ const App = () => {
 
                   {/* MARQUEE */}
                   <div className="w-full overflow-hidden">
-                      <ScrollVelocity
-                        texts={[
-                          <span key="a" className="flex items-center">
-                            <span className="logo-text">INVESTMENT BANKING HOUSE</span>
-                            <img src="/images/icon/logo1.png" className="scroll-logo" />
-                          </span>
-                        ]}
-                        velocity={120}
-                      />
+                    <ScrollVelocity
+                      texts={[
+                        <span key="a" className="flex items-center gap-4">
+                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
+                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
+                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
+                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
+                        </span>
+                      ]}
+                      velocity={120}
+                    />
                   </div>
-
 
                   {/* SKILLS SECTION */}
                   <section
