@@ -28,11 +28,17 @@ const App = () => {
 
                   {/* MARQUEE */}
                   <div className="w-full overflow-hidden">
-                    <ScrollVelocity
-                      texts={["INVESTMENT BANKING HOUSE"]}
-                      velocity={120}
-                    />
+                      <ScrollVelocity
+                        texts={[
+                          <span key="a" className="flex items-center">
+                            <span className="logo-text">INVESTMENT BANKING HOUSE</span>
+                            <img src="/images/icon/logo1.png" className="scroll-logo" />
+                          </span>
+                        ]}
+                        velocity={120}
+                      />
                   </div>
+
 
                   {/* SKILLS SECTION */}
                   <section
@@ -51,6 +57,7 @@ const App = () => {
               }
             />
             <Route path="/navbar" element={<Navbar />} />
+            <Route path="/skills" element={<SkillsPage />} />
           </Routes>
         </div>
       </Router>

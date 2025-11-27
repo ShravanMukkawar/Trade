@@ -11,14 +11,13 @@ if (typeof window !== "undefined") {
 }
 
 const defaultItems = [
-  { name: "Gold & Forex", img: "/images/Icon/Gold.png" },
-  { name: "Currency Data", img: "/images/Icon/currency.avif" },
-  { name: "Bitcoin Data", img: "/images/Icon/Bitcoin.jpeg" },
-  { name: "Trading View", img: "/images/Icon/Trading.jpeg" },
-  { name: "IBH", img: "/images/Icon/logo.png" },
-   { name: "MetaTrade", img: "/images/Icon/Meta.avif" }
+  { name: "Gold & Forex", img: "/images/icon/Gold.png" },
+  { name: "Currency Data", img: "/images/icon/currency.avif" },
+  { name: "Bitcoin Data", img: "/images/icon/Bitcoin.jpeg" },
+  { name: "Trading View", img: "/images/icon/Trading.jpeg" },
+  { name: "IBH", img: "/images/icon/logo1.png" },
+  { name: "MetaTrade", img: "/images/icon/Meta.avif" },
 ];
-
 
 const defaultConfig = {
   gap: 0.08,
@@ -35,34 +34,31 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
   const spotlightHeaderRef = useRef(null);
   const titlesContainerElementRef = useRef(null);
 
-  const introTextElementsRef = useRef([]);
   const imageElementsRef = useRef([]);
   const titleElementsRef = useRef([]);
-
-  const bgImageRef = useRef(null);
-  const bgImageImgRef = useRef(null);
 
   const currentActiveIndexRef = useRef(0);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Smooth scrolling
+  // Smooth scrolling with Lenis
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    lenisRef.current = new Lenis();
+    const lenis = new Lenis();
+    lenisRef.current = lenis;
 
     const handleScroll = () => ScrollTrigger.update();
-    lenisRef.current.on("scroll", handleScroll);
+    lenis.on("scroll", handleScroll);
 
     const ticker = (time) => {
-      if (lenisRef.current) lenisRef.current.raf(time * 1000);
+      lenis.raf(time * 1000);
     };
 
     gsap.ticker.add(ticker);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
-      if (lenisRef.current) lenisRef.current.destroy();
+      lenis.destroy();
       gsap.ticker.remove(ticker);
     };
   }, []);
@@ -113,8 +109,6 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
     const titlesContainer = titlesContainerRef.current;
     const titlesContainerEl = titlesContainerElementRef.current;
 
-    if (!imageEls.length || !titleEls.length) return;
-
     imageEls.forEach((img) => gsap.set(img, { opacity: 0 }));
 
     const HEADER_START = 0.011;
@@ -131,23 +125,25 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
       onUpdate: (self) => {
         const progress = self.progress;
 
-        if (progress <= HEADER_START) {
-          if (spotlightHeader) spotlightHeader.style.opacity = "0";
-          if (titlesContainerEl) {
-            titlesContainerEl.style.setProperty("--before-opacity", "0");
-            titlesContainerEl.style.setProperty("--after-opacity", "0");
-          }
+        // Always show in range for both scroll directions
+        const inMainRange = progress > HEADER_START && progress <= SWITCH_END;
+
+        if (spotlightHeader)
+          spotlightHeader.style.opacity = inMainRange ? "1" : "0";
+
+        if (titlesContainerEl) {
+          titlesContainerEl.style.setProperty(
+            "--before-opacity",
+            inMainRange ? "1" : "0"
+          );
+          titlesContainerEl.style.setProperty(
+            "--after-opacity",
+            inMainRange ? "1" : "0"
+          );
         }
 
-        else if (progress > HEADER_START && progress <= SWITCH_START) {
-          if (spotlightHeader) spotlightHeader.style.opacity = "1";
-          if (titlesContainerEl) {
-            titlesContainerEl.style.setProperty("--before-opacity", "1");
-            titlesContainerEl.style.setProperty("--after-opacity", "1");
-          }
-        }
-
-        else if (progress > SWITCH_START && progress <= SWITCH_END) {
+        // Move titles & images
+        if (progress > SWITCH_START && progress <= SWITCH_END) {
           const switchProgress = (progress - SWITCH_START) / switchSpan;
           const vh = window.innerHeight;
           const totalHeight = titlesContainer?.scrollHeight || 0;
@@ -176,6 +172,7 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
             }
           });
 
+          // Highlight closest title
           const mid = vh / 2;
           let closest = 0;
           let minDist = Infinity;
@@ -196,19 +193,16 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
           if (closest !== current) {
             titleEls[current].style.opacity = "0.25";
             titleEls[closest].style.opacity = "1";
-
             currentActiveIndexRef.current = closest;
           }
-        }
-
-        else {
-          if (spotlightHeader) spotlightHeader.style.opacity = "0";
+        } else {
+          imageEls.forEach((img) => gsap.set(img, { opacity: 0 }));
         }
       },
     });
 
     return () => scrollTrigger.kill();
-  }, [isInitialized, items, mergedConfig]);
+  }, [isInitialized]);
 
   useEffect(() => {
     setIsInitialized(true);
@@ -221,7 +215,10 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
       </section>
 
       <section className={`${styles.spotlight} spotlight`}>
-        <div className={styles.spotlightTitlesContainer} ref={titlesContainerElementRef}>
+        <div
+          className={styles.spotlightTitlesContainer}
+          ref={titlesContainerElementRef}
+        >
           <div className={styles.spotlightTitles} ref={titlesContainerRef}>
             {items.map((item, index) => (
               <h1

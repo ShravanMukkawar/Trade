@@ -3,7 +3,7 @@
 .parallax {
   position: relative;
   overflow: hidden;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   background-color: #f1f5f9;
@@ -16,7 +16,7 @@
   text-align: center;
   font-family: "Archivo Black", sans-serif;
   font-style: italic;
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -26,17 +26,37 @@
 }
 
 .scroller span {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 0 1.5rem;
+  padding: 0 0.75rem;
 }
 
 @media (min-width: 768px) {
   .parallax {
-    height: 5rem;
+    height: 3rem;
   }
   .scroller {
-    font-size: 3rem;
-    line-height: 3.0rem;
+    font-size: 2rem;
+    line-height: 1;
+  }
+}
+
+.logo-text {
+  display: inline-block;
+}
+
+.scroll-logo {
+  height: 4.5rem;
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+  margin: 0 2rem;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .scroll-logo {
+    height: 4.5rem;
   }
 }
