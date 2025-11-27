@@ -11,12 +11,12 @@ if (typeof window !== "undefined") {
 }
 
 const defaultItems = [
-  { name: "Gold & Forex", img: "/images/icon/Gold.png" },
-  { name: "Currency Data", img: "/images/icon/currency.avif" },
-  { name: "Bitcoin Data", img: "/images/icon/Bitcoin.jpeg" },
-  { name: "Trading View", img: "/images/icon/Trading.jpeg" },
-  { name: "IBH", img: "/images/icon/logo1.png" },
-  { name: "MetaTrade", img: "/images/icon/Meta.avif" },
+  { name: "Gold & Forex", img: "/images/icon/Meta.avif" },
+  { name: "Currency Data", img: "/images/icon/Gold.png" },
+  { name: "Bitcoin Data", img: "/images/icon/currency.avif" },
+  { name: "Trading View", img: "/images/icon/Bitcoin.jpeg" },
+  { name: "IBH", img: "/images/icon/Trading.jpeg" },
+  { name: "MetaTrade", img: "/images/icon/logo1.png" },
 ];
 
 const defaultConfig = {
