@@ -233,13 +233,13 @@
   }
 
   .spotlightImages {
-    width: 70%;
+    width: 80%;
     min-width: 200px;
   }
 
   .spotlightImg {
-    width: 120px;
-    height: 90px;
+    width: 140px;
+    height: 110px;
   }
 }
 
