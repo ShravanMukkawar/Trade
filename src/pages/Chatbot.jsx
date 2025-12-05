@@ -13,6 +13,7 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const audioRef = useRef(null);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -22,6 +23,44 @@ const Chatbot = () => {
     audioRef.current = new Audio("/audio/robo.wav");
     audioRef.current.preload = "auto";
   }, []);
+
+  // Prevent scroll propagation to parent
+  useEffect(() => {
+    const messagesContainer = messagesContainerRef.current;
+    
+    const handleWheel = (e) => {
+      if (!messagesContainer) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = messagesContainer;
+      const isAtTop = scrollTop === 0;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+      // Prevent scroll propagation if we're not at the boundaries
+      if ((!isAtTop && e.deltaY < 0) || (!isAtBottom && e.deltaY > 0)) {
+        e.stopPropagation();
+      }
+    };
+
+    if (messagesContainer) {
+      messagesContainer.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (messagesContainer) {
+        messagesContainer.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [open]);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [messages, loading]);
 
   const playSound = () => {
     if (audioRef.current) {
@@ -142,6 +181,7 @@ USER ASKED: ${userQuery}
       setMessages((prev) => [...prev, { role: "assistant", content: text }]);
 
     } catch (error) {
+      console.error("Error fetching AI response:", error);
       setMessages((prev) => [...prev, { role: "assistant", content: "❌ IBH system error." }]);
     }
     setLoading(false);
@@ -191,7 +231,11 @@ USER ASKED: ${userQuery}
           </div>
 
           {/* MESSAGES WITH ROBOT BACKGROUND */}
-          <div className="relative flex-1 overflow-y-auto p-5 scrollbar-visible">
+          <div 
+            ref={messagesContainerRef}
+            className="relative flex-1 overflow-y-auto p-5 scrollbar-visible"
+            onWheel={(e) => e.stopPropagation()}
+          >
 
             {/* ROBOT BACKGROUND INSERTED HERE */}
             <div className="fixed inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
@@ -277,7 +321,7 @@ USER ASKED: ${userQuery}
                 </div>
               )}
 
-              <div ref={messagesEndRef} />
+              <div ref={messagesEndRef} style={{ height: '1px' }} />
 
               <div className="flex flex-wrap gap-2 pt-6 pb-4">
                 {faqQuestions.map((q) => (
