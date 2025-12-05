@@ -225,9 +225,9 @@ USER ASKED: ${userQuery}
               </h3>
             </div>
 
-            <button onClick={() => setOpen(false)} className="p-2 hover:bg-white/20 rounded-full transition z-10">
-              <X size={22} />
-            </button>
+          <button className="p-2 hover:bg-black/20 rounded-full transition" onClick={() => setOpen(false)}>
+            <X size={22} className="text-white drop-shadow-sm" />
+          </button>
           </div>
 
           {/* MESSAGES WITH ROBOT BACKGROUND */}
