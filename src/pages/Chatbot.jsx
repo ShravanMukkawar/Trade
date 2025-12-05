@@ -208,8 +208,11 @@ USER ASKED: ${userQuery}
       )}
 
       {open && (
-        <div className="fixed bottom-5 right-5 z-50 w-[350px] h-[550px] max-w-[95vw] max-h-[92vh] bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-cyan-500/30 overflow-hidden flex flex-col">
-
+<div className="fixed bottom-2 right-2 sm:bottom-5 sm:right-5 z-50 
+  w-[min(350px,calc(100vw-1rem))] 
+  h-[min(550px,calc(100vh-1rem))] 
+  sm:w-[380px] sm:h-[550px] 
+  bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-cyan-500/30 overflow-hidden flex flex-col">
           <div className="relative bg-gradient-to-r from-purple-800 via-blue-900 to-cyan-900 text-white p-5 flex items-center justify-between">
             <div className="relative flex items-center gap-4 z-10">
               <div className="relative">
