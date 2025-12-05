@@ -210,7 +210,6 @@ USER ASKED: ${userQuery}
       {open && (
         <div className="fixed bottom-5 right-5 z-50 w-[350px] h-[550px] max-w-[95vw] max-h-[92vh] bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-cyan-500/30 overflow-hidden flex flex-col">
 
-          {/* Header */}
           <div className="relative bg-gradient-to-r from-purple-800 via-blue-900 to-cyan-900 text-white p-5 flex items-center justify-between">
             <div className="relative flex items-center gap-4 z-10">
               <div className="relative">
@@ -225,10 +224,14 @@ USER ASKED: ${userQuery}
               </h3>
             </div>
 
-          <button className="p-2 hover:bg-black/20 rounded-full transition" onClick={() => setOpen(false)}>
-            <X size={22} className="text-white drop-shadow-sm" />
-          </button>
-          </div>
+            <button 
+              onClick={() => setOpen(false)} 
+              className="p-2 bg-black/30 hover:bg-black/50 rounded-full transition z-10"
+            >
+              <X size={22} className="text-white" />
+            </button>
+
+        </div>
 
           {/* MESSAGES WITH ROBOT BACKGROUND */}
           <div 
