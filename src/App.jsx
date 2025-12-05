@@ -5,14 +5,14 @@ import Navbar from "./pages/Navbar";
 import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
 import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
 import SkillsPage from "./pages/SkillPage";
-import Chatbot from "./pages/Chatbot"; 
+import Chatbot from "./pages/Chatbot";
 
 const App = () => {
   return (
-    <AuroraBackground showRadialGradient={false}>
-      <Router>
+    <Router>
+      {/* Entire UI with gradients */}
+      <AuroraBackground showRadialGradient={false}>
         <Navbar />
-        <Chatbot />  
 
         <div className="relative z-10 pt-20">
           <Routes>
@@ -59,12 +59,16 @@ const App = () => {
                 </>
               }
             />
+
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/skills" element={<SkillsPage />} />
           </Routes>
         </div>
-      </Router>
-    </AuroraBackground>
+      </AuroraBackground>
+
+      {/* Chatbot must be OUTSIDE backgrounds */}
+      <Chatbot />
+    </Router>
   );
 };
 
