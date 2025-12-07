@@ -6,6 +6,7 @@ import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
 import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
 import SkillsPage from "./pages/SkillPage";
 import Chatbot from "./pages/Chatbot";
+import Footer from "./pages/Footer";
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
                   <section className="min-h-screen flex items-center">
                     <SubscriptionPlans />
                   </section>
+                  <Footer />
                 </>
               }
             />
