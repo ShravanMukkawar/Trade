@@ -12,9 +12,9 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { label: "Home", target: "top" },
+    { label: "Home", target: "/" },
     { label: "Tech", target: "skills-section" },
-    { label: "About", target: "about-section" },
+    { label: "Graphs", target: "/graphs" },
     { label: "Help", target: "help-section" },
     { label: "Contact", target: "contact-section" },
   ];
@@ -133,15 +133,30 @@ useEffect(() => {
   /* ------------------------------------------
       SCROLL TO SECTIONS
   ------------------------------------------- */
-  const scrollToSection = (target) => {
-    if (target === "top") {
+const scrollToSection = (target) => {
+  // If target is a route
+  if (target.startsWith("/")) {
+    if (location.pathname === target) {
+      // Already on the page → scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
+    } else {
+      navigate(target);
     }
+    return;
+  }
 
-    const el = document.getElementById(target);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  // Handle scrolling inside same page
+  if (target === "top") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  const el = document.getElementById(target);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 
   return (
     <nav
