@@ -6,15 +6,9 @@ import { Suspense, lazy } from "react";
 
 // 💡 Lazy Load All Heavy Components
 const Robot = lazy(() => import("./pages/Robot"));
-const SkillsPage = lazy(() => import("./pages/SkillPage"));
-const SubscriptionPlans = lazy(() =>
-  import("./pages/Subscription Plans/SubscriptionPlans")
-);
-const ScrollVelocity = lazy(() =>
-  import("./Scroll Velocity/ScrollVelocity")
-);
-const Chatbot = lazy(() => import("./pages/Chatbot"));
-const Footer = lazy(() => import("./pages/Footer"));
+
+// const Chatbot = lazy(() => import("./pages/Chatbot"));
+// const Footer = lazy(() => import("./pages/Footer"));
 
 const App = () => {
   return (
