@@ -83,7 +83,7 @@ const SubscriptionPlans = () => {
   ];
 
   return (
-    <div className="w-full pt-24 pb-16 relative pricing-section-overlay">
+    <div className="w-full pt-24 pb-0 sm:pb-1 md:pb-2 lg:pb-4 relative pricing-section-overlay">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-8">
