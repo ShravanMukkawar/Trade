@@ -1,80 +1,102 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import Robot from "./pages/Robot";
 import Navbar from "./pages/Navbar";
-import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
-import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
-import SkillsPage from "./pages/SkillPage";
-import Chatbot from "./pages/Chatbot";
 import Graphs from "./pages/Graphs/Graphs";
-import Footer from "./pages/Footer";
+import { Suspense, lazy } from "react";
+
+// 💡 Lazy Load All Heavy Components
+const Robot = lazy(() => import("./pages/Robot"));
+const SkillsPage = lazy(() => import("./pages/SkillPage"));
+const SubscriptionPlans = lazy(() =>
+  import("./pages/Subscription Plans/SubscriptionPlans")
+);
+const ScrollVelocity = lazy(() =>
+  import("./Scroll Velocity/ScrollVelocity")
+);
+const Chatbot = lazy(() => import("./pages/Chatbot"));
+const Footer = lazy(() => import("./pages/Footer"));
+
 const App = () => {
   return (
     <Router>
-      {/* Entire UI with gradients */}
       <AuroraBackground showRadialGradient={false}>
         <Navbar />
 
         <div className="relative z-10 pt-20">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  {/* HERO */}
-                  <section
-                    id="top"
-                    className="min-h-screen flex items-center justify-center text-center"
-                  >
-                    <Robot />
-                  </section>
+          <Suspense fallback={<div style={{ height: "400px" }}></div>}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    {/* HERO SECTION */}
+                    <section
+                      id="top"
+                      className="min-h-screen flex items-center justify-center text-center"
+                    >
+                      <Robot />
+                    </section>
 
-                  {/* MARQUEE */}
-                  <div className="w-full overflow-hidden">
+                    {/* MARQUEE */}
                     <ScrollVelocity
                       texts={[
                         <span key="a" className="flex items-center gap-4">
-                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
-                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
-                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
-                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
-                        </span>
+                          <img
+                            src="/images/icon/logo1.png"
+                            className="h-20 w-20"
+                          />
+                          <span className="logo-text">
+                            INVESTMENT BANKING HOUSE
+                          </span>
+                          <img
+                            src="/images/icon/logo1.png"
+                            className="h-20 w-20"
+                          />
+                          <span className="logo-text">
+                            INVESTMENT BANKING HOUSE
+                          </span>
+                        </span>,
                       ]}
                       velocity={120}
                     />
-                  </div>
 
-                  {/* SKILLS SECTION */}
-                  <section
-                    id="skills-section"
-                    className="min-h-screen flex items-center"
-                    style={{ backgroundColor: "#0C0C0C" }}
-                  >
-                    <SkillsPage />
-                  </section>
+                    {/* SKILLS SECTION */}
+                    <section
+                      id="skills-section"
+                      className="min-h-screen flex items-center"
+                      style={{ backgroundColor: "#0C0C0C" }}
+                    >
+                      <SkillsPage />
+                    </section>
 
-                  {/* PLANS */}
-                  <section className="min-h-screen flex items-center">
-                    <SubscriptionPlans />
-                  </section>
+                    {/* PLANS SECTION */}
+                    <section className="min-h-screen flex items-center">
+                      <SubscriptionPlans />
+                    </section>
 
-                  {/* GRAPHS */}
-                  <section className="min-h-screen flex items-center pt-0">
-                    <Graphs />
-                  </section>
-                  <Footer />
-                </>
-              }
-            />
+                    {/* GRAPHS SECTION */}
+                    <section className="min-h-screen flex items-center pt-0">
+                      <Graphs />
+                    </section>
 
-            <Route path="/navbar" element={<Navbar />} />
-            <Route path="/skills" element={<SkillsPage />} />
-          </Routes>
+                    {/* FOOTER */}
+                    <Footer />
+                  </>
+                }
+              />
+
+              {/* Additional Route */}
+              <Route path="/skills" element={<SkillsPage />} />
+              <Route path="/graphs" element={<Graphs />} />
+            </Routes>
+          </Suspense>
         </div>
       </AuroraBackground>
 
-      {/* Chatbot must be OUTSIDE backgrounds */}
-      <Chatbot />
+      {/* Chatbot lazy-loaded separately */}
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
     </Router>
   );
 };
