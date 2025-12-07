@@ -3,7 +3,11 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import Navbar from "./pages/Navbar";
 import Graphs from "./pages/Graphs/Graphs";
 import { Suspense, lazy } from "react";
-
+import ScrollVelocity from "./components/ScrollVelocity"; 
+import SkillsPage from "./pages/SkillsPage";
+import SubscriptionPlans from "./pages/SubscriptionPlans";
+import Footer from "./pages/Footer";
+import Chatbot from "./pages/Chatbot";
 // 💡 Lazy Load All Heavy Components
 const Robot = lazy(() => import("./pages/Robot"));
 
@@ -17,7 +21,6 @@ const App = () => {
         <Navbar />
 
         <div className="relative z-10 pt-20">
-          <Suspense fallback={<div style={{ height: "400px" }}></div>}>
             <Routes>
               <Route
                 path="/"
@@ -83,14 +86,11 @@ const App = () => {
               <Route path="/skills" element={<SkillsPage />} />
               <Route path="/graphs" element={<Graphs />} />
             </Routes>
-          </Suspense>
         </div>
       </AuroraBackground>
 
       {/* Chatbot lazy-loaded separately */}
-      <Suspense fallback={null}>
         <Chatbot />
-      </Suspense>
     </Router>
   );
 };
