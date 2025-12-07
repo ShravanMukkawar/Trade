@@ -1,14 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import Navbar from "./pages/Navbar";
-import Graphs from "./pages/Graphs/Graphs";
-import { Suspense, lazy } from "react";
-import ScrollVelocity from "./components/ScrollVelocity";
-import SkillsPage from "./pages/SkillsPage";
-import SubscriptionPlans from "./pages/SubscriptionPlans";
-import Footer from "./pages/Footer";
+import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
+import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
+import SkillsPage from "./pages/SkillPage";
 import Chatbot from "./pages/Chatbot";
-
+import Graphs from "./pages/Graphs/Graphs";
+import Footer from "./pages/Footer";
+import { lazy, Suspense } from "react";
 // 💡 Lazy Load ONLY Heavy Component
 const Robot = lazy(() => import("./pages/Robot"));
 
