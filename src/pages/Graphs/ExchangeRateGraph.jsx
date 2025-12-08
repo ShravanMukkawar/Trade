@@ -108,7 +108,7 @@ const ExchangeRateGraph = () => {
 
       {/* Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <div className="inline-flex rounded-full bg-slate-900/60 border border-slate-700/70 p-0.5 sm:p-1 w-fit overflow-x-auto">
+        <div className="inline-flex gap-1 sm:gap-1.5 rounded-full bg-slate-900/60 border border-slate-700/70 p-0.5 sm:p-1 w-fit overflow-x-auto">
           {RANGE_OPTIONS.map((range) => {
             const isActive = range.label === selectedRange.label;
             return (
