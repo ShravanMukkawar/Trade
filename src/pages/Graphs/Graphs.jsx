@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import GraphCarousel from "./GraphCarousel/GraphCarousel";
+import TradingNews from "./TradingNews";
 import { useScrollFloat } from "../Subscription Plans/hooks/useScrollFloat";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -63,6 +64,9 @@ const Graphs = () => {
       <div className="w-full flex items-center justify-center overflow-visible px-2 sm:px-4">
         <GraphCarousel />
       </div>
+
+      {/* Trading News Section */}
+      <TradingNews />
     </main>
   );
 };

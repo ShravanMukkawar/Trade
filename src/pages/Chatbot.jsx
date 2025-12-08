@@ -216,7 +216,7 @@ USER ASKED: ${userQuery}
           <div className="relative bg-gradient-to-r from-purple-800 via-blue-900 to-cyan-900 text-white p-5 flex items-center justify-between">
             <div className="relative flex items-center gap-4 z-10">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center animate-pulse-slow shadow-lg">
+                <div className="w-12 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center animate-pulse-slow shadow-lg">
                   <Bot size={28} className="text-white animate-float" />
                 </div>
                 <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-yellow-300 animate-spin-slow" />

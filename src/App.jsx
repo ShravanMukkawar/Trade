@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import Robot from "./pages/Robot";
 import Navbar from "./pages/Navbar";
 import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
 import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
@@ -8,10 +7,13 @@ import SkillsPage from "./pages/SkillPage";
 import Chatbot from "./pages/Chatbot";
 import Graphs from "./pages/Graphs/Graphs";
 import Footer from "./pages/Footer";
+import { lazy, Suspense } from "react";
+// 💡 Lazy Load ONLY Heavy Component
+const Robot = lazy(() => import("./pages/Robot"));
+
 const App = () => {
   return (
     <Router>
-      {/* Entire UI with gradients */}
       <AuroraBackground showRadialGradient={false}>
         <Navbar />
 
@@ -21,28 +23,39 @@ const App = () => {
               path="/"
               element={
                 <>
-                  {/* HERO */}
+                  {/* HERO SECTION */}
                   <section
                     id="top"
                     className="min-h-screen flex items-center justify-center text-center"
                   >
-                    <Robot />
+                    {/* Suspense wrapper only for Robot */}
+                    <Suspense fallback={<div style={{ height: "400px" }}></div>}>
+                      <Robot />
+                    </Suspense>
                   </section>
 
                   {/* MARQUEE */}
-                  <div className="w-full overflow-hidden">
-                    <ScrollVelocity
-                      texts={[
-                        <span key="a" className="flex items-center gap-4">
-                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
-                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
-                          <img src="/images/icon/logo1.png" className="h-20 w-20" />
-                          <span className="logo-text">INVESTMENT BANKING HOUSE</span>
+                  <ScrollVelocity
+                    texts={[
+                      <span key="a" className="flex items-center gap-4">
+                        <img
+                          src="/images/icon/logo1.png"
+                          className="h-20 w-20"
+                        />
+                        <span className="logo-text">
+                          INVESTMENT BANKING HOUSE
                         </span>
-                      ]}
-                      velocity={120}
-                    />
-                  </div>
+                        <img
+                          src="/images/icon/logo1.png"
+                          className="h-20 w-20"
+                        />
+                        <span className="logo-text">
+                          INVESTMENT BANKING HOUSE
+                        </span>
+                      </span>,
+                    ]}
+                    velocity={120}
+                  />
 
                   {/* SKILLS SECTION */}
                   <section
@@ -53,27 +66,30 @@ const App = () => {
                     <SkillsPage />
                   </section>
 
-                  {/* PLANS */}
+                  {/* PLANS SECTION */}
                   <section className="min-h-screen flex items-center">
                     <SubscriptionPlans />
                   </section>
 
-                  {/* GRAPHS */}
+                  {/* GRAPHS SECTION */}
                   <section className="min-h-screen flex items-center pt-0">
                     <Graphs />
                   </section>
+
+                  {/* FOOTER */}
                   <Footer />
                 </>
               }
             />
 
-            <Route path="/navbar" element={<Navbar />} />
+            {/* Additional Routes */}
             <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/graphs" element={<Graphs />} />
           </Routes>
         </div>
       </AuroraBackground>
 
-      {/* Chatbot must be OUTSIDE backgrounds */}
+      {/* Chatbot outside background */}
       <Chatbot />
     </Router>
   );
