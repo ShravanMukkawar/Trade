@@ -75,9 +75,6 @@ const App = () => {
                   <section className="min-h-screen flex items-center pt-0">
                     <Graphs />
                   </section>
-
-                  {/* FOOTER */}
-                  <Footer />
                 </>
               }
             />
@@ -88,6 +85,9 @@ const App = () => {
           </Routes>
         </div>
       </AuroraBackground>
+
+      {/* FOOTER - Outside Aurora Background */}
+      <Footer />
 
       {/* Chatbot outside background */}
       <Chatbot />
