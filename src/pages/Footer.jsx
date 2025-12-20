@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Twitter, 
-  ArrowRight, Send, ChevronUp, Shield 
+  Mail, Phone, Instagram, MessageCircle, 
+  ArrowRight, ChevronUp 
 } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
   const [isVisible, setIsVisible] = useState(false);
 
   // Scroll to top button visibility
@@ -30,17 +29,10 @@ export default function Footer() {
     });
   };
 
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thank you for subscribing with ${email}!`);
-    setEmail('');
-  };
-
   const socialLinks = [
-    { Icon: Facebook, href: '#', label: 'Facebook', color: 'hover:bg-blue-600' },
-    { Icon: Instagram, href: 'https://instagram.com/aureuscapital', label: 'Instagram', color: 'hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600' },
-    { Icon: Twitter, href: '#', label: 'Twitter', color: 'hover:bg-sky-500' },
-    { Icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:bg-blue-700' }
+    { Icon: Instagram, href: 'https://www.instagram.com/ibh.trade.09?igsh=MXF2NjE5YTIxa2Q2dQ==', label: 'Instagram', color: 'hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600' },
+    { Icon: Mail, href: 'mailto:Investmentbankinghouse@gmail.com', label: 'Gmail', color: 'hover:bg-red-600' },
+    { Icon: MessageCircle, href: 'https://wa.me/918275746327', label: 'WhatsApp', color: 'hover:bg-green-600' }
   ];
 
   return (
@@ -91,32 +83,8 @@ export default function Footer() {
                 capital raising, and strategic advisory for growth-stage companies worldwide.
               </p>
 
-              {/* Newsletter */}
-              <div className="pt-4">
-                <h4 className="text-white font-semibold mb-3 flex items-center">
-                  <Send className="w-4 h-4 mr-2 text-yellow-500" />
-                  Subscribe to Newsletter
-                </h4>
-                <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="flex-1 px-4 py-2.5 bg-gray-800/50 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2.5 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-900 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/50"
-                  >
-                    <Send className="w-4 h-4" />
-                  </button>
-                </form>
-              </div>
-
               {/* Social Media */}
-              <div>
+              <div className="pt-4">
                 <h4 className="text-white font-semibold mb-4">Connect With Us</h4>
                 <div className="flex space-x-3">
                   {socialLinks.map(({ Icon, href, label, color }) => (
@@ -205,57 +173,38 @@ export default function Footer() {
               </h3>
               <ul className="space-y-5 text-sm">
                 <li className="group">
-                  <div className="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-300">
-                    <div className="p-2 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors">
-                      <MapPin className="w-5 h-5 text-yellow-500" />
-                    </div>
-                    <div>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        123 Financial District<br />
-                        New York, NY 10005<br />
-                        United States
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li className="group">
-                  <a href="tel:+11234567890" className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-300">
+                  <a href="tel:+918275746327" className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-300">
                     <div className="p-2 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors">
                       <Phone className="w-5 h-5 text-yellow-500" />
                     </div>
                     <span className="text-gray-400 group-hover:text-yellow-500 transition-colors">
-                      +1 (123) 456-7890
+                      +91 82757 46327
                     </span>
                   </a>
                 </li>
                 <li className="group">
-                  <a href="mailto:info@ibh.com" className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-300">
+                  <a href="mailto:Investmentbankinghouse@gmail.com" className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-300">
                     <div className="p-2 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors">
                       <Mail className="w-5 h-5 text-yellow-500" />
                     </div>
                     <span className="text-gray-400 group-hover:text-yellow-500 transition-colors">
-                      info@ibh.com
+                      Investmentbankinghouse@gmail.com
                     </span>
                   </a>
                 </li>
               </ul>
 
-              {/* Certifications */}
-              <div className="mt-6 p-4 bg-gradient-to-br from-gray-800/30 to-gray-800/10 rounded-lg border border-gray-800/50">
-                <p className="text-xs text-gray-400 mb-2 flex items-center">
-                  <Shield className="w-4 h-4 mr-2 text-yellow-500" />
-                  Licensed & Regulated
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['SEC', 'FINRA', 'SIPC'].map((cert) => (
-                    <span
-                      key={cert}
-                      className="px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-700"
-                    >
-                      {cert}
-                    </span>
-                  ))}
-                </div>
+              {/* WhatsApp Channel Button */}
+              <div className="mt-6">
+                <a
+                  href="https://wa.me/918275746327"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-3 p-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/50"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  <span>Join Our WhatsApp Channel</span>
+                </a>
               </div>
             </div>
 
@@ -264,28 +213,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800/50 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm">
-            <p className="text-gray-400 text-center md:text-left">
+          <div className="flex justify-center items-center">
+            <p className="text-gray-400 text-center text-sm">
               © {currentYear} <span className="text-yellow-500 font-semibold">IBH Capital Partners</span>. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-gray-400">
-              <a href="#" className="hover:text-yellow-500 transition-colors relative group">
-                Privacy Policy
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="hover:text-yellow-500 transition-colors relative group">
-                Terms of Service
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="hover:text-yellow-500 transition-colors relative group">
-                Legal Disclaimer
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-              <a href="#" className="hover:text-yellow-500 transition-colors relative group">
-                Cookie Policy
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
