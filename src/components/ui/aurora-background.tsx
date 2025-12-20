@@ -14,18 +14,16 @@ export const AuroraBackground = ({
   ...props
 }: AuroraBackgroundProps) => {
   return (
-    <main>
+    <div
+      className={cn(
+        "transition-bg relative w-full min-h-screen bg-zinc-50 text-slate-950 dark:bg-zinc-900",
+        className,
+      )}
+      {...props}
+    >
       <div
-        className={cn(
-          // Allow multi-section pages to scroll normally: top-aligned, grows with content
-          "transition-bg relative min-h-[100vh] w-full flex flex-col items-stretch justify-start bg-zinc-50 text-slate-950 dark:bg-zinc-900",
-          className,
-        )}
-        {...props}
-      >
-        <div
-          className="absolute inset-0 overflow-hidden"
-          style={
+        className="fixed inset-0 pointer-events-none z-0"
+        style={
             {
               "--aurora":
                 "repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)",
@@ -55,8 +53,9 @@ export const AuroraBackground = ({
             )}
           ></div>
         </div>
-        {children}
+        <div className="relative z-10">
+          {children}
+        </div>
       </div>
-    </main>
   );
 };
