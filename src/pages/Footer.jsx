@@ -36,9 +36,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-300 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-300">
       {/* Animated Background */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div 
           className="absolute inset-0" 
           style={{
@@ -50,8 +50,8 @@ export default function Footer() {
       </div>
 
       {/* Gradient Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
