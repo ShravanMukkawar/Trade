@@ -5,7 +5,7 @@ import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
 import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
 import SkillsPage from "./pages/SkillPage";
 import Chatbot from "./pages/Chatbot";
-import Graphs from "./pages/Graphs/Graphs";
+// import Graphs from "./pages/Graphs/Graphs";
 import Footer from "./pages/Footer";
 import { lazy, Suspense } from "react";
 // 💡 Lazy Load ONLY Heavy Component
@@ -71,23 +71,23 @@ const App = () => {
                     <SubscriptionPlans />
                   </section>
 
-                  {/* GRAPHS SECTION */}
+                  {/* GRAPHS SECTION
                   <section className="min-h-screen flex items-center pt-0">
                     <Graphs />
-                  </section>
+                  </section> */}
+
+                  {/* FOOTER */}
+                  <Footer />
                 </>
               }
             />
 
             {/* Additional Routes */}
             <Route path="/skills" element={<SkillsPage />} />
-            <Route path="/graphs" element={<Graphs />} />
+            {/* <Route path="/graphs" element={<Graphs />} /> */}
           </Routes>
         </div>
       </AuroraBackground>
-
-      {/* FOOTER - Outside Aurora Background */}
-      <Footer />
 
       {/* Chatbot outside background */}
       <Chatbot />
