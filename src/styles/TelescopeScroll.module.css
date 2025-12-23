@@ -189,6 +189,13 @@
   .outro {
     padding: 2rem;
     text-align: center;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+
+  .spotlight {
+    min-height: 100vh !important;
+    max-height: 100vh !important;
   }
 
   .spotlightTitlesContainer {
@@ -228,6 +235,17 @@
     font-size: 1.2rem;
   }
 
+  .intro,
+  .outro {
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+
+  .spotlight {
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+  }
+
   .spotlightTitles {
     gap: 3rem;
   }
@@ -255,6 +273,13 @@
   .intro,
   .outro {
     padding: 1rem;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+
+  .spotlight {
+    min-height: 100vh !important;
+    max-height: 100vh !important;
   }
 
   .spotlightTitles {

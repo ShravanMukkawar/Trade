@@ -116,10 +116,14 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
     const SWITCH_END = 0.95;
     const switchSpan = SWITCH_END - SWITCH_START;
 
+    // Fixed: Reduce scroll distance significantly on mobile
+    const isMobile = window.innerWidth <= 768;
+    const scrollMultiplier = isMobile ? 0.6 : 10; // Reduced to 1.2 to eliminate black space
+
     const scrollTrigger = ScrollTrigger.create({
       trigger: ".spotlight",
       start: "top top",
-      end: "+=" + window.innerHeight * 10 + "px",
+      end: "+=" + window.innerHeight * scrollMultiplier + "px",
       pin: true,
       scrub: 1,
       onUpdate: (self) => {
