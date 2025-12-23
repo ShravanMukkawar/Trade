@@ -15,7 +15,7 @@ const Navbar = () => {
     { label: "Home", target: "/" },
     { label: "Tech", target: "skills-section" },
     { label: "Graphs", target: "/graphs" },
-    { label: "Help", target: "help-section" },
+    { label: "About", target: "/about" },
     { label: "Contact", target: "contact-section" },
   ];
 
@@ -131,6 +131,23 @@ useEffect(() => {
   };
 
   /* ------------------------------------------
+      CHECK FOR STORED SCROLL TARGET
+  ------------------------------------------- */
+  useEffect(() => {
+    const scrollTarget = sessionStorage.getItem('scrollTarget');
+    if (scrollTarget && location.pathname === "/") {
+      sessionStorage.removeItem('scrollTarget');
+      // Wait for page to fully render
+      setTimeout(() => {
+        const el = document.getElementById(scrollTarget);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 300);
+    }
+  }, [location.pathname]);
+
+  /* ------------------------------------------
       SCROLL TO SECTIONS
   ------------------------------------------- */
 const scrollToSection = (target) => {
@@ -142,6 +159,14 @@ const scrollToSection = (target) => {
     } else {
       navigate(target);
     }
+    return;
+  }
+
+  // If we're on a different page and need to scroll to a section, go to home first
+  if (location.pathname !== "/" && !target.startsWith("/")) {
+    // Store the target in sessionStorage to scroll after navigation
+    sessionStorage.setItem('scrollTarget', target);
+    navigate("/");
     return;
   }
 

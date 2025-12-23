@@ -5,12 +5,12 @@ import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
 import ScrollVelocity from "./Scroll Velocity/ScrollVelocity";
 import SkillsPage from "./pages/SkillPage";
 import Chatbot from "./pages/Chatbot";
-// import Graphs from "./pages/Graphs/Graphs";
+import Graphs from "./pages/Graphs/Graphs";
 import Footer from "./pages/Footer";
 import { lazy, Suspense } from "react";
 // 💡 Lazy Load ONLY Heavy Component
 const Robot = lazy(() => import("./pages/Robot"));
-
+import About from "./pages/About";
 const App = () => {
   return (
     <Router>
@@ -84,7 +84,8 @@ const App = () => {
 
             {/* Additional Routes */}
             <Route path="/skills" element={<SkillsPage />} />
-            {/* <Route path="/graphs" element={<Graphs />} /> */}
+            <Route path="/about" element={<About />} /> 
+            <Route path="/graphs" element={<Graphs />} /> 
           </Routes>
         </div>
       </AuroraBackground>
