@@ -11,9 +11,12 @@ import { lazy, Suspense } from "react";
 // 💡 Lazy Load ONLY Heavy Component
 const Robot = lazy(() => import("./pages/Robot"));
 import About from "./pages/About";
+import Learn from "./pages/Learn";
+import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <AuroraBackground showRadialGradient={false}>
         <Navbar />
 
@@ -85,7 +88,8 @@ const App = () => {
             {/* Additional Routes */}
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/about" element={<About />} /> 
-            <Route path="/graphs" element={<Graphs />} /> 
+            <Route path="/graphs" element={<Graphs />} />
+            <Route path="/learn" element={<Learn />} /> 
           </Routes>
         </div>
       </AuroraBackground>

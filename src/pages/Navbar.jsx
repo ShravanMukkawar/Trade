@@ -15,14 +15,27 @@ const Navbar = () => {
     { label: "Home", target: "/" },
     { label: "Tech", target: "skills-section" },
     { label: "Graphs", target: "/graphs" },
+    { label: "Learn", target: "/learn" },
     { label: "About", target: "/about" },
     { label: "Contact", target: "contact-section" },
   ];
 
   /* ------------------------------------------
+      RESET NAVBAR COLOR WHEN NOT ON HOME PAGE
+  ------------------------------------------- */
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setWhiteNav(false);
+    }
+  }, [location.pathname]);
+
+  /* ------------------------------------------
       1) INTERSECTION OBSERVER (Backup Only)
   ------------------------------------------- */
   useEffect(() => {
+    // Only apply on home page
+    if (location.pathname !== "/") return;
+
     const target = document.getElementById("skills-section");
     if (!target) return;
 
@@ -48,6 +61,9 @@ const Navbar = () => {
       (Main Controller for white navbar)
   ------------------------------------------- */
 useEffect(() => {
+  // Only apply on home page
+  if (location.pathname !== "/") return;
+
   const handleScroll = () => {
     const section = document.getElementById("skills-section");
     if (!section) return;
@@ -70,7 +86,7 @@ useEffect(() => {
 
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+}, [location.pathname]);
 
   /* ------------------------------------------
       AUDIO CODE

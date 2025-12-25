@@ -21,6 +21,14 @@ const PlanCard = ({ name, price, originalPrice, discountedPrice, description, fe
   const discountPercent = hasDiscountData
     ? Math.round(((originalPrice - discountedPrice) / originalPrice) * 100)
     : null;
+
+  const handleWhatsAppRedirect = () => {
+    const phoneNumber = "918275746327"; // WhatsApp number with country code
+    const message = encodeURIComponent(`Can I get to know more about the ${name} subscription plan?`);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const handleMouseMove = useCallback((event) => {
     const card = event.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -46,6 +54,8 @@ const PlanCard = ({ name, price, originalPrice, discountedPrice, description, fe
         className={`plan-card pricing-card ${variant === "left" ? "plan-card--left" : ""}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onClick={handleWhatsAppRedirect}
+        style={{ cursor: 'pointer' }}
       >
       <div className="plan-card-accent-wrap">
         <div className="plan-card-accent">
