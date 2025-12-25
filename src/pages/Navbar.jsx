@@ -17,7 +17,7 @@ const Navbar = () => {
     { label: "Graphs", target: "/graphs" },
     { label: "Learn", target: "/learn" },
     { label: "About", target: "/about" },
-    { label: "Contact", target: "contact-section" },
+    { label: "Contact", target: "footer-section" },
   ];
 
   /* ------------------------------------------
@@ -174,6 +174,15 @@ const scrollToSection = (target) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       navigate(target);
+    }
+    return;
+  }
+
+  // Special handling for footer-section - scroll on current page
+  if (target === "footer-section") {
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     return;
   }

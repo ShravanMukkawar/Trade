@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Shield, Users, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CountUp = ({ end, duration = 2000, suffix = "", delay = 0 }) => {
   const [count, setCount] = useState(0);
@@ -50,6 +51,8 @@ const CountUp = ({ end, duration = 2000, suffix = "", delay = 0 }) => {
 };
 
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background elements */}
@@ -188,7 +191,10 @@ const About = () => {
           <div className="bg-white/70 backdrop-blur-sm p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl inline-block border border-gray-100/50 shadow-lg max-w-full">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 px-2">Ready to Transform Your Trading Experience?</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl px-2">Join thousands of successful traders who have chosen IBH as their trusted partner in financial growth</p>
-            <button className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-xl hover:shadow-blue-500/30 transform hover:scale-105 transition-all duration-300">
+            <button 
+              onClick={() => navigate('/Subscription')}
+              className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-xl hover:shadow-blue-500/30 transform hover:scale-105 transition-all duration-300"
+            >
               Begin Your Journey
             </button>
           </div>

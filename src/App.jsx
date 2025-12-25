@@ -40,21 +40,31 @@ const App = () => {
                   {/* MARQUEE */}
                   <ScrollVelocity
                     texts={[
-                      <span key="a" className="flex items-center gap-4">
+                      <span key="a" className="flex items-center">
+                        <span className="logo-text mx-4">INVESTMENT BANKING HOUSE</span>
                         <img
                           src="/images/icon/logo1.png"
-                          className="h-20 w-20"
+                          className="h-20 w-20 mx-4"
+                          alt="IBH Logo"
                         />
-                        <span className="logo-text">
-                          INVESTMENT BANKING HOUSE
-                        </span>
+                        <span className="logo-text mx-4">INVESTMENT BANKING HOUSE</span>
                         <img
                           src="/images/icon/logo1.png"
-                          className="h-20 w-20"
+                          className="h-20 w-20 mx-4"
+                          alt="IBH Logo"
                         />
-                        <span className="logo-text">
-                          INVESTMENT BANKING HOUSE
-                        </span>
+                        <span className="logo-text mx-4">INVESTMENT BANKING HOUSE</span>
+                        <img
+                          src="/images/icon/logo1.png"
+                          className="h-20 w-20 mx-4"
+                          alt="IBH Logo"
+                        />
+                        <span className="logo-text mx-4">INVESTMENT BANKING HOUSE</span>
+                        <img
+                          src="/images/icon/logo1.png"
+                          className="h-20 w-20 mx-4"
+                          alt="IBH Logo"
+                        />
                       </span>,
                     ]}
                     velocity={120}
@@ -90,6 +100,8 @@ const App = () => {
             <Route path="/about" element={<About />} /> 
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/learn" element={<Learn />} /> 
+            <Route path="/footer" element={<Footer />} />
+            <Route path="/Subscription" element={<SubscriptionPlans />} />  
           </Routes>
         </div>
       </AuroraBackground>
