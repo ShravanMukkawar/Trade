@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import ExchangeRateGraph from "../ExchangeRateGraph";
 import BitcoinGraph from "../BitcoinGraph/BitcoinGraph";
 
@@ -16,7 +17,20 @@ const GRAPHS = [
 ];
 
 const GraphCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [searchParams] = useSearchParams();
+  const graphParam = searchParams.get('graph');
+  
+  // Find initial index based on URL param
+  const getInitialIndex = () => {
+    if (graphParam === 'bitcoin') {
+      return GRAPHS.findIndex(g => g.id === 'bitcoin');
+    } else if (graphParam === 'usd-eur') {
+      return GRAPHS.findIndex(g => g.id === 'usd-eur');
+    }
+    return 0; // default
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(getInitialIndex());
   const [arrowTop, setArrowTop] = useState('50%');
   const [arrowLeft, setArrowLeft] = useState('0px');
   const [arrowRight, setArrowRight] = useState('0px');
@@ -26,6 +40,21 @@ const GraphCarousel = () => {
   const chartContainerRef = useRef(null);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
+
+  // Update index when URL param changes
+  useEffect(() => {
+    if (graphParam === 'bitcoin') {
+      const bitcoinIndex = GRAPHS.findIndex(g => g.id === 'bitcoin');
+      if (bitcoinIndex !== -1) {
+        setCurrentIndex(bitcoinIndex);
+      }
+    } else if (graphParam === 'usd-eur') {
+      const usdEurIndex = GRAPHS.findIndex(g => g.id === 'usd-eur');
+      if (usdEurIndex !== -1) {
+        setCurrentIndex(usdEurIndex);
+      }
+    }
+  }, [graphParam]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? GRAPHS.length - 1 : prev - 1));
