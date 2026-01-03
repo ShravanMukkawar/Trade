@@ -17,7 +17,7 @@ const Navbar = () => {
     { label: "Graphs", target: "/graphs" },
     { label: "Learn", target: "/learn" },
     { label: "About", target: "/about" },
-    { label: "Contact", target: "footer-section" },
+    { label: "Contact", target: "/contact" },
   ];
 
   /* ------------------------------------------
