@@ -108,7 +108,6 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base bg-white/5 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all duration-300 hover:border-white/30"
-                    placeholder="John Doe"
                   />
                 </div>
 
@@ -125,7 +124,6 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base bg-white/5 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all duration-300 hover:border-white/30"
-                    placeholder="john@example.com"
                   />
                 </div>
               </div>
@@ -144,7 +142,6 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base bg-white/5 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all duration-300 hover:border-white/30"
-                    placeholder="+1 (555) 000-0000"
                   />
                 </div>
 
@@ -161,7 +158,6 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base bg-white/5 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all duration-300 hover:border-white/30"
-                    placeholder="How can we help?"
                   />
                 </div>
               </div>
@@ -179,7 +175,6 @@ const Contact = () => {
                   required
                   rows="5"
                   className="w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base bg-white/5 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all duration-300 resize-none hover:border-white/30 sm:rows-6"
-                  placeholder="Tell us more about your inquiry..."
                 />
               </div>
 
