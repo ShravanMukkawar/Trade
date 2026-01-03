@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Mail, Phone, Instagram, MessageCircle, 
   ArrowRight, ChevronUp 
@@ -7,6 +8,7 @@ import {
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Scroll to top button visibility
   useEffect(() => {
@@ -120,15 +122,115 @@ export default function Footer() {
                   'Risk Assessment'
                 ].map((item, index) => (
                   <li key={item} style={{ animationDelay: `${index * 50}ms` }}>
-                    <a
-                      href="#"
-                      className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
-                    >
-                      <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        {item}
-                      </span>
-                    </a>
+                    {item === 'Bitcoin Trading' ? (
+                      <a
+                        href="/graphs?graph=bitcoin"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/graphs?graph=bitcoin');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Market Analysis' ? (
+                      <a
+                        href="/graphs?graph=usd-eur"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/graphs?graph=usd-eur');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Portfolio Management' ? (
+                      <a
+                        href="/about"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/about');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Debt & Equity Financing' ? (
+                      <a
+                        href="/news"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/news');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Risk Assessment' ? (
+                      <a
+                        href="/news"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/news');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Trading View Analytics' ? (
+                      <a
+                        href="/graphs"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/graphs');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Meta Trade Platform' ? (
+                      <a
+                        href="/Subscription"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/Subscription');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : (
+                      <a
+                        href="#"
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -151,15 +253,101 @@ export default function Footer() {
                   'Contact Us'
                 ].map((item, index) => (
                   <li key={item} style={{ animationDelay: `${index * 50}ms` }}>
-                    <a
-                      href="#"
-                      className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
-                    >
-                      <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        {item}
-                      </span>
-                    </a>
+                    {item === 'About Us' ? (
+                      <a
+                        href="/about"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/about');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Careers' ? (
+                      <a
+                        href="/Subscription"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/Subscription');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'News & Insights' ? (
+                      <a
+                        href="/news"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/news');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Leadership' ? (
+                      <a
+                        href="/about"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/about');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Partners' ? (
+                      <a
+                        href="/about"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/about');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : item === 'Press Releases' ? (
+                      <a
+                        href="/news"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/news');
+                        }}
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    ) : (
+                      <a
+                        href="#"
+                        className="group flex items-center text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item}
+                        </span>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

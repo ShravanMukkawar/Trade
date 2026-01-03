@@ -2,11 +2,11 @@ import React from "react";
 import TelescopeScroll from "./TelescopeScroll";
 
 const customItems = [
-  { name: "Gold & Forex", img: "/images/icon/Meta.avif" },
+  { name: "Gold & Forex", img: "/images/icon/Meta.png" },
   { name: "Currency Data", img: "/images/icon/Gold.png" },
-  { name: "Bitcoin Data", img: "/images/icon/currency.avif" },
-  { name: "Trading View", img: "/images/icon/Bitcoin.jpeg" },
-  { name: "IBH", img: "/images/icon/Trading.jpeg" },
+  { name: "Bitcoin Data", img: "/images/icon/currency.png" },
+  { name: "Trading View", img: "/images/icon/Bitcoin.png" },
+  { name: "IBH", img: "/images/icon/Trading.png" },
   { name: "MetaTrade", img: "/images/icon/logo1.png" },
 
 ];

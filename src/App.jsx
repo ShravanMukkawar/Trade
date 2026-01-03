@@ -12,7 +12,11 @@ import { lazy, Suspense } from "react";
 const Robot = lazy(() => import("./pages/Robot"));
 import About from "./pages/About";
 import Learn from "./pages/Learn";
+<<<<<<< HEAD
 import Contact from "./pages/Contact";
+=======
+import News from "./pages/News";
+>>>>>>> 27eaf9aaa9a1a398d666b0f5dcf7074d06a8c56f
 import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
@@ -101,7 +105,11 @@ const App = () => {
             <Route path="/about" element={<About />} /> 
             <Route path="/graphs" element={<Graphs />} />
             <Route path="/learn" element={<Learn />} /> 
+<<<<<<< HEAD
             <Route path="/contact" element={<Contact />} />
+=======
+            <Route path="/news" element={<News />} />
+>>>>>>> 27eaf9aaa9a1a398d666b0f5dcf7074d06a8c56f
             <Route path="/footer" element={<Footer />} />
             <Route path="/Subscription" element={<SubscriptionPlans />} />  
           </Routes>
