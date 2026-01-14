@@ -3,6 +3,7 @@ import GraphCarousel from "./GraphCarousel/GraphCarousel";
 import TradingNews from "./TradingNews";
 import { useScrollFloat } from "../Subscription Plans/hooks/useScrollFloat";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SEO from "../../components/SEO";
 
 const Graphs = () => {
   const graphsTitleRef = useRef(null);
@@ -23,7 +24,44 @@ const Graphs = () => {
   }, []);
 
   return (
-    <main className="w-full min-h-screen flex flex-col items-center justify-center py-0 sm:py-1 md:py-2 lg:py-4">
+    <>
+      <SEO 
+        description="Investment trading analytics - Track real-time Bitcoin (BTC USD) and USD EUR forex charts with professional investment trading analysis. View live market data, price trends, and currency pair trading insights from Investment Banking House."
+        keywords="investment trading, investment banking, btc usd price chart, usd eur forex chart, forex currency pairs trading, market analysis, professional trading analysis, live trading charts, investment trading analytics"
+        ogDescription="Investment trading analytics - Track real-time Bitcoin and USD EUR forex charts with professional investment trading analysis and live market data."
+        canonical="https://www.ibhalgo.com/graphs"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": "https://www.ibhalgo.com/graphs#webpage",
+          "url": "https://www.ibhalgo.com/graphs",
+          "name": "Investment Trading Analytics - Live Market Charts | Investment Banking House",
+          "description": "Investment trading analytics - Track real-time Bitcoin and USD EUR forex charts with professional investment trading analysis from Investment Banking House.",
+          "mainEntity": {
+            "@id": "https://www.ibhalgo.com/#organization"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.ibhalgo.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Investment Trading Charts",
+                "item": "https://www.ibhalgo.com/graphs"
+              }
+            ]
+          }
+        })}
+      </script>
+      <main className="w-full min-h-screen flex flex-col items-center justify-center py-0 sm:py-1 md:py-2 lg:py-4">
       <div className="w-full pt-0 pb-1 sm:pb-2 md:pb-3 lg:pb-4 lg:pt-4 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Header Section */}
@@ -68,6 +106,7 @@ const Graphs = () => {
       {/* Trading News Section */}
       <TradingNews />
     </main>
+    </>
   );
 };
 

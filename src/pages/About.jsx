@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { TrendingUp, Shield, Users, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const CountUp = ({ end, duration = 2000, suffix = "", delay = 0 }) => {
   const [count, setCount] = useState(0);
@@ -54,7 +55,44 @@ const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <>
+      <SEO 
+        description="Learn about Investment Banking House (IBH) - a premier investment banking and investment trading company in India. Our team of financial experts delivers automated trading, investment trading services, and algorithmic trading solutions."
+        keywords="investment banking, investment trading, investment banking house, algorithmic trading company india, automated trading services india, forex trading platform india, professional trading analysis, trading signals subscription, investment trading company"
+        ogDescription="Learn about Investment Banking House (IBH) - a premier investment banking and investment trading company in India. Our team delivers automated trading and investment trading services."
+        canonical="https://www.ibhalgo.com/about"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "@id": "https://www.ibhalgo.com/about#webpage",
+          "url": "https://www.ibhalgo.com/about",
+          "name": "About Investment Banking House - Investment Trading Services",
+          "description": "Learn about Investment Banking House (IBH) - a premier investment banking and investment trading company in India.",
+          "mainEntity": {
+            "@id": "https://www.ibhalgo.com/#organization"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.ibhalgo.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://www.ibhalgo.com/about"
+              }
+            ]
+          }
+        })}
+      </script>
+      <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
@@ -222,6 +260,7 @@ const About = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 

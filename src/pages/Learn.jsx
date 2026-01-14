@@ -1,5 +1,6 @@
 import { BookOpen, ExternalLink, Download, Star } from 'lucide-react';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 const Learn = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -92,7 +93,44 @@ const books = [
 ];
 
   return (
-    <section className="w-full min-h-screen bg-transparent py-12 lg:py-16">
+    <>
+      <SEO 
+        description="Investment trading education - Enhance your investment banking and investment trading knowledge with curated educational materials. Access trading books, technical analysis guides, and professional trading resources for forex and crypto trading from Investment Banking House."
+        keywords="investment trading education, investment banking education, trading resources, trading education, forex trading books, technical analysis, trading strategies, trading signals subscription, investment trading resources"
+        ogDescription="Investment trading education - Enhance your investment banking and investment trading knowledge with curated educational materials and professional trading resources."
+        canonical="https://www.ibhalgo.com/learn"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": "https://www.ibhalgo.com/learn#webpage",
+          "url": "https://www.ibhalgo.com/learn",
+          "name": "Investment Trading Education - Trading Resources | Investment Banking House",
+          "description": "Investment trading education - Enhance your investment banking and investment trading knowledge with curated educational materials from Investment Banking House.",
+          "mainEntity": {
+            "@id": "https://www.ibhalgo.com/#organization"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.ibhalgo.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Investment Trading Education",
+                "item": "https://www.ibhalgo.com/learn"
+              }
+            ]
+          }
+        })}
+      </script>
+      <section className="w-full min-h-screen bg-transparent py-12 lg:py-16">
       <style>{`
         .flip-card {
           perspective: 1000px;
@@ -278,6 +316,7 @@ const books = [
         </div>
       </div>
     </section>
+    </>
   );
 };
 

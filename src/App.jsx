@@ -15,6 +15,7 @@ import Learn from "./pages/Learn";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import ScrollToTop from "./components/ScrollToTop";
+import SEO from "./components/SEO";
 const App = () => {
   return (
     <Router>
@@ -28,6 +29,103 @@ const App = () => {
               path="/"
               element={
                 <>
+                  <SEO 
+                    description="Investment Banking House (IBH) - Premier investment banking and investment trading services. Automated trading, algorithmic trading, forex trading, crypto trading, and MT4/MT5 trading platforms in India. Professional investment trading solutions with 24/7 automated systems."
+                    keywords="investment banking, investment trading, investment banking house, algorithmic trading, automated trading, forex trading, crypto trading, investment services india, trading platform, investment trading company, investment banking services, automated investment trading"
+                    ogDescription="Investment Banking House (IBH) - Premier investment banking and investment trading services. Automated trading, algorithmic trading, forex trading, and crypto trading solutions in India."
+                    canonical="https://www.ibhalgo.com/"
+                  />
+                  {/* Structured Data - Organization */}
+                  <script type="application/ld+json">
+                    {JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "FinancialService",
+                      "@id": "https://www.ibhalgo.com/#organization",
+                      "name": "Investment Banking House",
+                      "alternateName": ["IBH", "Investment Banking House IBH"],
+                      "description": "Investment Banking House (IBH) - Premier investment banking and investment trading services. Automated trading, algorithmic trading, forex trading, crypto trading, and MT4/MT5 trading platforms in India.",
+                      "url": "https://www.ibhalgo.com/",
+                      "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://www.ibhalgo.com/images/icon/logo2.jpg"
+                      },
+                      "image": "https://www.ibhalgo.com/images/icon/logo2.jpg",
+                      "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91-82757-46327",
+                        "contactType": "Customer Service",
+                        "email": "Investmentbankinghouse@gmail.com",
+                        "areaServed": "IN",
+                        "availableLanguage": "English"
+                      },
+                      "address": {
+                        "@type": "PostalAddress",
+                        "addressCountry": "IN"
+                      },
+                      "areaServed": {
+                        "@type": "Country",
+                        "name": "India"
+                      },
+                      "serviceType": [
+                        "Investment Banking",
+                        "Investment Trading",
+                        "Algorithmic Trading",
+                        "Automated Trading",
+                        "Automated Forex Trading",
+                        "Cryptocurrency Trading",
+                        "MT4/MT5 Trading Services",
+                        "Trading Signals",
+                        "Market Analysis",
+                        "Investment Services"
+                      ],
+                      "keywords": "investment banking, investment trading, investment banking house, algorithmic trading, automated trading, forex trading, crypto trading",
+                      "sameAs": [
+                        "https://www.instagram.com/ibh.trade.09"
+                      ],
+                      "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.8",
+                        "reviewCount": "1000"
+                      }
+                    })}
+                  </script>
+                  {/* Structured Data - WebSite */}
+                  <script type="application/ld+json">
+                    {JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "WebSite",
+                      "@id": "https://www.ibhalgo.com/#website",
+                      "url": "https://www.ibhalgo.com/",
+                      "name": "Investment Banking House - IBH",
+                      "description": "Investment Banking House (IBH) - Premier investment banking and investment trading services",
+                      "publisher": {
+                        "@id": "https://www.ibhalgo.com/#organization"
+                      },
+                      "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": {
+                          "@type": "EntryPoint",
+                          "urlTemplate": "https://www.ibhalgo.com/?s={search_term_string}"
+                        },
+                        "query-input": "required name=search_term_string"
+                      }
+                    })}
+                  </script>
+                  {/* Structured Data - BreadcrumbList */}
+                  <script type="application/ld+json">
+                    {JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "BreadcrumbList",
+                      "itemListElement": [
+                        {
+                          "@type": "ListItem",
+                          "position": 1,
+                          "name": "Home",
+                          "item": "https://www.ibhalgo.com/"
+                        }
+                      ]
+                    })}
+                  </script>
                   {/* HERO SECTION */}
                   <section
                     id="top"

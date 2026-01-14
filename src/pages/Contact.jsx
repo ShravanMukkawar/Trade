@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -73,7 +74,44 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden flex items-start justify-center px-3 sm:px-4 md:px-6 pt-20 sm:pt-22 md:pt-10 pb-12 sm:pb-16">
+    <>
+      <SEO 
+        description="Contact Investment Banking House (IBH) for investment banking services, investment trading solutions, automated trading services, MT4/MT5 trading platforms, and forex trading solutions in India. Get in touch with our investment trading team."
+        keywords="contact investment banking house, contact ibh, investment banking services, investment trading, algorithmic trading company india, automated trading services india, forex trading platform india, investment trading contact"
+        ogDescription="Contact Investment Banking House (IBH) for investment banking services, investment trading solutions, and automated trading services in India."
+        canonical="https://www.ibhalgo.com/contact"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "@id": "https://www.ibhalgo.com/contact#webpage",
+          "url": "https://www.ibhalgo.com/contact",
+          "name": "Contact Investment Banking House - Investment Trading Services",
+          "description": "Contact Investment Banking House (IBH) for investment banking services and investment trading solutions in India.",
+          "mainEntity": {
+            "@id": "https://www.ibhalgo.com/#organization"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.ibhalgo.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://www.ibhalgo.com/contact"
+              }
+            ]
+          }
+        })}
+      </script>
+      <div className="min-h-screen w-full overflow-x-hidden flex items-start justify-center px-3 sm:px-4 md:px-6 pt-20 sm:pt-22 md:pt-10 pb-12 sm:pb-16">
       <div className="max-w-2xl w-full">
         {/* Header Section */}
         <div className="text-center mb-6 sm:mb-8 md:mb-10">
@@ -249,6 +287,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

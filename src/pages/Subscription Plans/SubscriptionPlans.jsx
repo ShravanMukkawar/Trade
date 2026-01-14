@@ -5,6 +5,7 @@ import PlanCard from "./PlanCard";
 import { useScrollFloat } from "./hooks/useScrollFloat";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../../styles/scrollFloat.css";
+import SEO from "../../components/SEO";
 
 const SubscriptionPlans = () => {
   const subscriptionTitleRef = useRef(null);
@@ -83,7 +84,44 @@ const SubscriptionPlans = () => {
   ];
 
   return (
-    <div className="w-full pt-24 pb-0 sm:pb-1 md:pb-2 lg:pb-4 relative pricing-section-overlay">
+    <>
+      <SEO 
+        description="Investment trading subscription plans - Choose from Investment Banking House trading subscription plans offering MT4/MT5 broker compatible automated trading services. XAU/USD, BTC/USD, currency pairs trading with 24/7 automated investment trading systems."
+        keywords="investment trading subscription, investment banking services, trading signals subscription, mt4 mt5 broker compatible, automated forex trading system, 24/7 automated trading, xau usd trading strategy, bitcoin trading signals, investment trading plans"
+        ogDescription="Investment trading subscription plans - Choose from Investment Banking House trading subscription plans offering MT4/MT5 broker compatible automated trading services with 24/7 support."
+        canonical="https://www.ibhalgo.com/Subscription"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": "https://www.ibhalgo.com/Subscription#webpage",
+          "url": "https://www.ibhalgo.com/Subscription",
+          "name": "Investment Trading Subscription Plans | Investment Banking House",
+          "description": "Investment trading subscription plans - Choose from Investment Banking House trading subscription plans offering automated investment trading services.",
+          "mainEntity": {
+            "@id": "https://www.ibhalgo.com/#organization"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.ibhalgo.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Investment Trading Plans",
+                "item": "https://www.ibhalgo.com/Subscription"
+              }
+            ]
+          }
+        })}
+      </script>
+      <div className="w-full pt-24 pb-0 sm:pb-1 md:pb-2 lg:pb-4 relative pricing-section-overlay">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-8">
@@ -174,6 +212,7 @@ const SubscriptionPlans = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -81,8 +81,7 @@ export default function Footer() {
               </div>
               
               <p className="text-sm text-gray-400 leading-relaxed">
-                Premier boutique investment bank specializing in mergers & acquisitions, 
-                capital raising, and strategic advisory for growth-stage companies worldwide.
+              A professional trading firm offering automated strategies, real-time market analysis, and multi-asset execution across global markets.
               </p>
 
               {/* Social Media */}
