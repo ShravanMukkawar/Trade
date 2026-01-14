@@ -113,12 +113,12 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
 
     const HEADER_START = 0.011;
     const SWITCH_START = 0.03;
-    const SWITCH_END = 0.95;
+    const SWITCH_END = 0.98; // Extended to use more of the scroll range
     const switchSpan = SWITCH_END - SWITCH_START;
 
-    // Fixed: Reduce scroll distance significantly on mobile
+    // Mobile: Tighter scroll range to eliminate blank space
     const isMobile = window.innerWidth <= 768;
-    const scrollMultiplier = isMobile ? 0.9 : 10; // Reduced to 1.2 to eliminate black space
+    const scrollMultiplier = isMobile ? 1.9 : 10;
 
     const scrollTrigger = ScrollTrigger.create({
       trigger: ".spotlight",
@@ -129,8 +129,8 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
       onUpdate: (self) => {
         const progress = self.progress;
 
-        // Always show in range for both scroll directions
-        const inMainRange = progress > HEADER_START && progress <= SWITCH_END;
+        // Keep content visible throughout the entire animation
+        const inMainRange = progress > HEADER_START && progress < 0.99;
 
         if (spotlightHeader)
           spotlightHeader.style.opacity = inMainRange ? "1" : "0";
