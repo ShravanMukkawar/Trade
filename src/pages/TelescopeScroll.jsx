@@ -118,7 +118,7 @@ const TelescopeScroll = ({ items = defaultItems, config = {} }) => {
 
     // Fixed: Reduce scroll distance significantly on mobile
     const isMobile = window.innerWidth <= 768;
-    const scrollMultiplier = isMobile ? 1 : 10; // Reduced to 1.2 to eliminate black space
+    const scrollMultiplier = isMobile ? 0.5 : 10; // Reduced to 1.2 to eliminate black space
 
     const scrollTrigger = ScrollTrigger.create({
       trigger: ".spotlight",
