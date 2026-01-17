@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, TrendingUp, Bot, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, TrendingUp, Bot, Sparkles, Maximize2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 const Chatbot = () => {
@@ -221,18 +221,28 @@ USER ASKED: ${userQuery}
                 </div>
                 <Sparkles className="absolute -top-1 -right-1 w-5 h-5 text-yellow-300 animate-spin-slow" />
               </div>
-              <h3 className="font-bold text-lg flex items-center gap-2">
+              <h3 className="font-bold text-lg">
                 IBH Trading Bot
-                <span className="text-xs bg-cyan-500/40 px-2.5 py-1 rounded-full border border-cyan-400">PRO</span>
               </h3>
             </div>
 
-            <button 
-              onClick={() => setOpen(false)} 
-              className="p-2 bg-black/30 hover:bg-black/50 rounded-full transition z-10"
-            >
-              <X size={22} className="text-white" />
-            </button>
+            <div className="flex items-center gap-2 z-10">
+              <span className="text-xs bg-cyan-500/40 px-2.5 py-1 rounded-full border border-cyan-400">PRO</span>
+              <button 
+                onClick={() => window.open('/chat', '_blank')} 
+                className="p-2 bg-black/30 hover:bg-black/50 rounded-full transition"
+                title="Open in fullscreen"
+              >
+                <Maximize2 size={22} className="text-white" />
+              </button>
+              <button 
+                onClick={() => setOpen(false)} 
+                className="p-2 bg-black/30 hover:bg-black/50 rounded-full transition"
+                title="Close"
+              >
+                <X size={22} className="text-white" />
+              </button>
+            </div>
 
         </div>
 

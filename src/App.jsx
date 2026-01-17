@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import Navbar from "./pages/Navbar";
 import SubscriptionPlans from "./pages/Subscription Plans/SubscriptionPlans";
@@ -14,16 +14,20 @@ import About from "./pages/About";
 import Learn from "./pages/Learn";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
+import ChatPage from "./pages/ChatPage";
 import ScrollToTop from "./components/ScrollToTop";
 import SEO from "./components/SEO";
-const App = () => {
-  return (
-    <Router>
-      <ScrollToTop />
-      <AuroraBackground showRadialGradient={false}>
-        <Navbar />
 
-        <div className="relative z-10 pt-20">
+const AppContent = () => {
+  const location = useLocation();
+  const isChatPage = location.pathname === '/chat';
+
+  return (
+    <>
+      <AuroraBackground showRadialGradient={false}>
+        {!isChatPage && <Navbar />}
+
+        <div className={`relative z-10 ${!isChatPage ? 'pt-20' : ''}`}>
           <Routes>
             <Route
               path="/"
@@ -202,6 +206,7 @@ const App = () => {
             <Route path="/learn" element={<Learn />} /> 
             <Route path="/contact" element={<Contact />} />
             <Route path="/news" element={<News />} />
+            <Route path="/chat" element={<ChatPage />} />
             <Route path="/footer" element={<Footer />} />
             <Route path="/Subscription" element={<SubscriptionPlans />} />  
           </Routes>
@@ -209,7 +214,16 @@ const App = () => {
       </AuroraBackground>
 
       {/* Chatbot outside background */}
-      <Chatbot />
+      {!isChatPage && <Chatbot />}
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
     </Router>
   );
 };
